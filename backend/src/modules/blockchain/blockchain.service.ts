@@ -1,6 +1,6 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ethers } from 'ethers';
-import { VerseiAsset, VerseiAsset__factory } from '../../../../hardhat/typechain-types'; // Adjust based on your setup
+import VerseiAssetABI from '../../framework/utils/abi'; // Now using TS import
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -9,21 +9,24 @@ dotenv.config();
 export class BlockchainService {
   private provider: ethers.JsonRpcProvider;
   private signer: ethers.Wallet;
-  private contract: VerseiAsset;
+  private contract: ethers.Contract;
 
   constructor() {
-    // Initialize with chain ID to prevent ENS resolution
     this.provider = new ethers.JsonRpcProvider(process.env.RPC_URL, {
-      chainId: parseInt(process.env.CHAIN_ID || "31337"), // Default to Hardhat
-      name: "local" // Prevents ENS resolution
+      chainId: parseInt(process.env.CHAIN_ID || "31337"),
+      name: "local"
     });
     
     this.signer = new ethers.Wallet(process.env.ADMIN_PRIVATE_KEY, this.provider);
     
-    // Convert owner address to prevent ENS resolution attempts
     const contractAddress = ethers.getAddress(process.env.VERSEI_ASSET_ADDRESS);
-    this.contract = VerseiAsset__factory.connect(contractAddress, this.signer);
+    this.contract = new ethers.Contract(
+      contractAddress,
+      VerseiAssetABI.abi,
+      this.signer
+    );
   }
+
 
   // Helper to ensure addresses don't trigger ENS resolution
   private async resolveAddress(input: string): Promise<string> {
