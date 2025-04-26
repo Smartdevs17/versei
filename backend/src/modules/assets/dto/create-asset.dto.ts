@@ -59,10 +59,5 @@ export class CreateAssetDto {
   @IsBoolean()
   isTokenised: boolean = false;
 
-  @ApiProperty({ description: 'Unique identifier for the token' })
-  @IsOptional()
-  @IsString()
-  tokenId: string;
-
 
 }

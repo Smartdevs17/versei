@@ -26,6 +26,8 @@ import { TransactionModule } from './modules/transactions/transactions.module';
     AssetsModule,
     KycModule,
     TransactionModule,
+    // FilesModule,
+    // BlockchainModule,
   ],
 })
 export class AppModule {}
