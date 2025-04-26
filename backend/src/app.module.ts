@@ -6,6 +6,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
 import { AssetsModule } from './modules/assets/assets.module';
 import { KycModule } from './modules/kyc/kyc.module';
+import { TransactionModule } from './modules/transactions/transactions.module';
 
 @Module({
   imports: [
@@ -24,7 +25,7 @@ import { KycModule } from './modules/kyc/kyc.module';
     UserModule,
     AssetsModule,
     KycModule,
-    // TransactionsModule,
+    TransactionModule,
     // FilesModule,
     // BlockchainModule,
   ],

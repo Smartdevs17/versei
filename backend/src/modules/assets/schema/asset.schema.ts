@@ -33,13 +33,16 @@ export class Asset {
   @Prop({ default: false })
   isVerified: boolean;
 
+  @Prop({ default: false })
+  isTokenised: boolean;
+
   @Prop()
   owner: string;
 
   @Prop()
   contractAddress: string;
 
-  @Prop()
+  @Prop({required: true})
   lockDuration: number;
 
   @Prop({ type: MongooseSchema.Types.Mixed })

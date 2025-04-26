@@ -1,9 +1,16 @@
+// transaction.module.ts
+
 import { Module } from '@nestjs/common';
-import { TransactionsService } from './transactions.service';
-import { TransactionsController } from './transactions.controller';
+import { MongooseModule } from '@nestjs/mongoose';
+import { TransactionService } from './transactions.service';
+import { TransactionController } from './transactions.controller';
+import { Transaction, TransactionSchema } from './schema/transaction.schema';
+import { ResponseService } from 'src/framework/response/response.service';
 
 @Module({
-  controllers: [TransactionsController],
-  providers: [TransactionsService],
+  imports: [MongooseModule.forFeature([{ name: Transaction.name, schema: TransactionSchema }])],
+  controllers: [TransactionController],
+  providers: [TransactionService, ResponseService],
+  exports: [TransactionService], // Exports the service if needed in other modules
 })
-export class TransactionsModule {}
+export class TransactionModule {}

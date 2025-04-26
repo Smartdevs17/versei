@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Asset, AssetDocument } from './schema/asset.schema';
 import { CreateAssetDto } from './dto/create-asset.dto';
+import { UpdateAssetDto } from './dto/update-asset.dto';
 
 @Injectable()
 export class AssetsService {
@@ -54,6 +55,14 @@ export class AssetsService {
       throw new NotFoundException('Asset not found or you do not have permission to view it');
     }
     return asset;
+  }
+
+  async update(id: string, updateAssetDto: UpdateAssetDto): Promise<Asset> {
+    const asset = await this.findOne(id);
+    if (!asset) throw new NotFoundException('Asset not found');
+    const updatedAsset = await this.assetModel.findByIdAndUpdate(id, updateAssetDto, { new: true }).exec();
+    if (!updatedAsset) throw new NotFoundException('Asset not found');
+    return updatedAsset;
   }
 
 }

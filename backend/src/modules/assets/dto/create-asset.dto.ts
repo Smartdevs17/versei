@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNumber, IsOptional, IsArray } from 'class-validator';
+import { IsString, IsNumber, IsOptional, IsArray, IsBoolean } from 'class-validator';
 
 export class CreateAssetDto {
   @ApiProperty({ description: 'Asset name' })
@@ -45,4 +45,19 @@ export class CreateAssetDto {
   @IsOptional()
   @IsString()
   ownership?: string;
+
+  @ApiProperty({ description: 'Contract address of the asset' })
+  @IsString()
+  contractAddress: string;
+
+  @ApiProperty({ required: true, description: 'Lock duration for the asset in days' })
+  @IsNumber()
+  lockDuration: number;
+
+  @ApiProperty({ description: 'Indicates if the asset is tokenised', default: false })
+  @IsOptional()
+  @IsBoolean()
+  isTokenised: boolean = false;
+
+
 }

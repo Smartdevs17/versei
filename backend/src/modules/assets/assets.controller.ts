@@ -1,9 +1,10 @@
-import { Controller, Get, Post, Body, Param, UseGuards, Request } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, UseGuards, Request, Put } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { AssetsService } from './assets.service';
 import { CreateAssetDto } from './dto/create-asset.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { ResponseService } from 'src/framework/response/response.service';
+import { UpdateAssetDto } from './dto/update-asset.dto';
 
 @ApiTags('Assets')
 @ApiBearerAuth()
@@ -68,6 +69,31 @@ export class AssetsController {
       return this.responseService.success({ data: result, message: 'Asset retrieved successfully' });
 
   }
+
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() updateAssetDto: UpdateAssetDto) {
+      const result = await this.assetsService.update(id, updateAssetDto);
+      return this.responseService.success({ data: result, message: 'Asset updated successfully' });
+  }
+
+    // GET /api/assets/:id.json
+  @Get(':id.json')
+  async getAssetMetadata(@Param('id') id: string) {
+    const asset = await this.assetsService.findOne(id);
+    return {
+      name: asset.name,
+      description: `A tokenized ${asset.category} asset`,
+      image: asset.images?.[0] ?? '', // Use the first image or fallback to empty string
+      attributes: [
+        { trait_type: 'Category', value: asset.category },
+        { trait_type: 'Yield Rate', value: asset.yieldRate },
+        { trait_type: 'Total Tokens', value: asset.totalTokens.toString() },
+        { trait_type: 'Token Price', value: `$${asset.tokenPrice}` }
+      ]
+    };
+
+}
+
 
 
   } 

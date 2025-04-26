@@ -1,34 +1,36 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { TransactionsService } from './transactions.service';
+import { Controller, Post, Body, Get, Param } from '@nestjs/common';
+import { TransactionService } from './transactions.service';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
-import { UpdateTransactionDto } from './dto/update-transaction.dto';
+import { ResponseService } from 'src/framework/response/response.service';
 
 @Controller('transactions')
-export class TransactionsController {
-  constructor(private readonly transactionsService: TransactionsService) {}
+export class TransactionController {
+  constructor(
+    private readonly transactionService: TransactionService,
+    private readonly responseService: ResponseService
+  ) {}
 
+  // Create a new transaction (Buy, Sell, etc.)
   @Post()
-  create(@Body() createTransactionDto: CreateTransactionDto) {
-    return this.transactionsService.create(createTransactionDto);
+  async createTransaction(@Body() createTransactionDto: CreateTransactionDto) {
+    const result = await this.transactionService.create(createTransactionDto);
+    return this.responseService.success({ data: result, message: 'Transaction created successfully' });
   }
 
+  // Get all transactions
   @Get()
-  findAll() {
-    return this.transactionsService.findAll();
+  async getAllTransactions() {
+    const result = await this.transactionService.findAll();
+    return this.responseService.success({ data: result, message: 'Transactions retrieved successfully' });
   }
 
+  // Get a transaction by ID
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.transactionsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTransactionDto: UpdateTransactionDto) {
-    return this.transactionsService.update(+id, updateTransactionDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.transactionsService.remove(+id);
+  async getTransactionById(@Param('id') id: string) {
+    const result = await this.transactionService.findById(id);
+    if (!result) {
+      return this.responseService.error({ message: 'Transaction not found', errors: 'No transaction found with the provided ID', code: 404 });
+    }
+    return this.responseService.success({ data: result, message: 'Transaction retrieved successfully' });
   }
 }
