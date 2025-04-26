@@ -50,10 +50,6 @@ export class Asset {
     appraisal?: string;
     ownership?: string;
   };
-
-  @Prop()
-  tokenId: string;
-
 }
 
 export const AssetSchema = SchemaFactory.createForClass(Asset);

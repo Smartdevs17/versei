@@ -63,6 +63,13 @@ export class AssetsController {
 
   }
 
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+      const result = await this.assetsService.findOne(id);
+      return this.responseService.success({ data: result, message: 'Asset retrieved successfully' });
+
+  }
+
   @Put(':id')
   async update(@Param('id') id: string, @Body() updateAssetDto: UpdateAssetDto) {
       const result = await this.assetsService.update(id, updateAssetDto);
@@ -84,12 +91,6 @@ export class AssetsController {
         { trait_type: 'Token Price', value: `$${asset.tokenPrice}` }
       ]
     };
-}
-
-@Get(':id')
-async findOne(@Param('id') id: string) {
-    const result = await this.assetsService.findOne(id);
-    return this.responseService.success({ data: result, message: 'Asset retrieved successfully' });
 
 }
 
