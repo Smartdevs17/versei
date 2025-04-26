@@ -32,9 +32,10 @@ async function bootstrap() {
         .build()
 
   const document = SwaggerModule.createDocument(app, config); 
-  SwaggerModule.setup('/', app, document)
-  console.log(`Server is running on http://localhost:${process.env.PORT}/api`);
-  await app.listen(process.env.PORT);
+  SwaggerModule.setup('/', app, document);
+  const port = process.env.PORT || 3000;
+  console.log(`Server is running on http://localhost:${port}/api`);
+  await app.listen(port);
   
 }
 bootstrap();
