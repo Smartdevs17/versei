@@ -67,8 +67,7 @@ backend/src/hardhat/./cache
 backend/src/hardhat/./artifacts
 
 # TypeChain files
-backend/src/hardhat/./typechain
-backend/src/hardhat/./typechain-types
+
 
 # solidity-coverage files
 backend/src/hardhat/./coverage
