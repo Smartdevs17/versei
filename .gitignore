@@ -45,26 +45,38 @@ frontend/dist
 # Backend (NestJS)
 backend/*.env.*
 backend/*.env
-backend/*.local
-backend/*.swp
-backend/.idea/
-backend/*.sqlite
-backend/*.sqlite3
-backend/*.db
-backend/*.db-journal
-backend/.vscode/
 backend/.DS_Store
-backend/.idea/
-backend/.history/
-backend/.eslintcache
 backend/node_modules
 backend/package-lock.json
 backend/yarn-error.log
 backend/yarn.lock
-backend/dist/
-backend/
+backend/dist
 
 
 # Miscellaneous
 .DS_Store
 Thumbs.db
+
+#hardhat 
+backend/src/hardhat/node_modules
+backend/src/hardhat/package-lock.json
+backend/src/hardhat/.env
+
+# Hardhat files
+backend/src/hardhat/./cache
+backend/src/hardhat/./artifacts
+
+# TypeChain files
+
+
+# solidity-coverage files
+backend/src/hardhat/./coverage
+backend/src/hardhat/./coverage.json
+
+# Hardhat Ignition default folder for deployments against a local node
+backend/src/hardhat/ignition/deployments/chain-31337
+
+hardhat/node_modules
+hardhat/package-lock.json
+
+hardhat/ignition
