@@ -13,3 +13,19 @@ body {
   font-family: "DM Sans", sans-serif;
   color: var(--color-pharos-black);
 }
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px; /* Slim scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #EFEFEF5C; /* Scrollbar color */
+  border-radius: 3px; /* Rounded edges */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Transparent track */
+}
+
+

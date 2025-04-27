@@ -10,7 +10,7 @@ const navItems = [
 
 const NavBar = () => {
   return (
-    <div className="bg-pharo-white h-[120px] w-full px-[150px] border-b border-[#1B255E33]">
+    <div className="bg-pharo-white h-[120px] w-full px-[150px] border-b border-[#1B255E33] sticky top-0 z-10">
       <div className="h-full flex items-center justify-between">
         <div>
           <img src={versei_logo} alt="VERSEI LOGO" />
