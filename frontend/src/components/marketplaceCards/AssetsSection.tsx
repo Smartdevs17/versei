@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MarketplaceAssetCard from './MarketplaceAssetCard';
 
-// Define the interface for the vineyard data
+// Interface for the Asset data
 interface MarketplaceAsset {
     image: string;
     category: string;

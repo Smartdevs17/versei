@@ -13,28 +13,28 @@ const Marketplace = () => {
         <>
             <NavBar />
 
-            <section className="relative flex flex-col items-center justify-center min-h-screen bg-[#2FD0DC1F] text-[#333739] px-4 overflow-hidden">
-                {/* Background ripple image */}
-                <div className="absolute w-[542px] h-[542px] animate-ripple pointer-events-none">
-                    <img className="w-full h-full object-cover opacity-40" src={herro_bg} alt="" />
-                </div>
+<section className="relative flex flex-col items-center justify-center min-h-screen bg-[#2FD0DC1F] text-[#333739] px-4 overflow-hidden">
+    {/* Background ripple image */}
+    <div className="absolute w-[542px] h-[542px] animate-ripple pointer-events-none">
+        <img className="w-full h-full object-cover opacity-40" src={herro_bg} alt="" />
+    </div>
 
-                <div className="text-center mb-4">
-                    <p className="text-sm font-medium text-gray-400">
-                        VERSEI TVL: <span>$2.65M</span>
-                    </p>
-                </div>
+    <div className="text-center mb-4">
+        <p className="text-sm font-medium text-gray-400">
+            VERSEI TVL: <span>$2.65M</span>
+        </p>
+    </div>
 
-                <h1 className="text-5xl font-extrabold text-center mb-4">
-                    Explore All Assets
-                </h1>
+    <h1 className="text-5xl font-extrabold text-center mb-4">
+        Explore All Assets
+    </h1>
 
-                <p className="text-gray-400 text-center mb-10 max-w-md">
-                    Discover tokenized assets and treasures verified on Versei
-                </p>
+    <p className="text-gray-400 text-center mb-10 max-w-md">
+        Discover tokenized assets and treasures verified on Versei
+    </p>
 
-                <SearchBar />
-            </section>
+    <SearchBar />
+</section>
 
 
 
