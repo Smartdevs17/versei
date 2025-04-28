@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BuySellCard from '../assetDetails/BuySellCard';
+import { useWishlist } from '../../context/WishlistContext';
 
 interface MarketplaceAsset {
   image: string;
@@ -9,6 +10,7 @@ interface MarketplaceAsset {
   availability: string;
   title: string;
   price: string;
+  createdAt: string;
 }
 
 interface MarketplaceAssetCardProps {
@@ -18,14 +20,21 @@ interface MarketplaceAssetCardProps {
 const MarketplaceAssetCard: React.FC<MarketplaceAssetCardProps> = ({ data }) => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isWishlisted, addToWishlist, removeFromWishlist } = useWishlist();
 
-  
-  const imageHeight = "150px"; 
-  const titleFontSize = "16px"; 
-  const bodyFontSize = "14px"; 
+  const imageHeight = "150px";
+  const titleFontSize = "16px";
+  const bodyFontSize = "14px";
+
+  const isNewAsset = () => {
+    const createdAtDate = new Date(data.createdAt);
+    const currentDate = new Date();
+    const timeDifference = currentDate.getTime() - createdAtDate.getTime();
+    const hoursDifference = timeDifference / (1000 * 60 * 60);
+    return hoursDifference < 24;
+  };
 
   const handleSeeDetails = () => {
-
     const encodedTitle = encodeURIComponent(data.title.replace(/\s+/g, '-'));
     console.log('Navigating with data:', data);
     navigate(`/asset/${encodedTitle}`, { state: { asset: data } });
@@ -39,6 +48,16 @@ const MarketplaceAssetCard: React.FC<MarketplaceAssetCardProps> = ({ data }) => 
     setIsModalOpen(false);
   };
 
+  const handleAddToWishlist = () => {
+    if (isWishlisted(data.title)) {
+      removeFromWishlist(data.title);
+      console.log(`Removed ${data.title} from wishlist`);
+    } else {
+      addToWishlist(data.title);
+      console.log(`Added ${data.title} to wishlist`);
+    }
+  };
+
   return (
     <>
       <div
@@ -50,7 +69,6 @@ const MarketplaceAssetCard: React.FC<MarketplaceAssetCardProps> = ({ data }) => 
           boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         }}
       >
-        {/* Image Section */}
         <div className="relative">
           <img
             src={data.image}
@@ -62,22 +80,25 @@ const MarketplaceAssetCard: React.FC<MarketplaceAssetCardProps> = ({ data }) => 
               borderRadius: "8px 8px 0 0",
             }}
           />
-          <span
-            style={{
-              position: "absolute",
-              top: "8px",
-              left: "8px",
-              backgroundColor: "#ff0000",
-              color: "white",
-              fontSize: "12px",
-              fontWeight: "bold",
-              padding: "2px 8px",
-              borderRadius: "4px",
-            }}
-          >
-            NEW
-          </span>
+          {isNewAsset() && (
+            <span
+              style={{
+                position: "absolute",
+                top: "8px",
+                left: "8px",
+                backgroundColor: "#ff0000",
+                color: "white",
+                fontSize: "12px",
+                fontWeight: "bold",
+                padding: "2px 8px",
+                borderRadius: "4px",
+              }}
+            >
+              NEW
+            </span>
+          )}
           <button
+            onClick={handleAddToWishlist}
             style={{
               position: "absolute",
               top: "8px",
@@ -88,8 +109,8 @@ const MarketplaceAssetCard: React.FC<MarketplaceAssetCardProps> = ({ data }) => 
             }}
           >
             <svg
-              className="w-6 h-6 text-gray-500 group-hover:text-white"
-              fill="none"
+              className={`w-6 h-6 ${isWishlisted(data.title) ? 'text-red-500' : 'text-gray-500'} group-hover:text-white`}
+              fill={isWishlisted(data.title) ? 'currentColor' : 'none'}
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
@@ -102,8 +123,6 @@ const MarketplaceAssetCard: React.FC<MarketplaceAssetCardProps> = ({ data }) => 
             </svg>
           </button>
         </div>
-
-        {/* Content Section */}
         <div style={{ padding: "8px" }}>
           <div
             style={{
@@ -183,7 +202,6 @@ const MarketplaceAssetCard: React.FC<MarketplaceAssetCardProps> = ({ data }) => 
         </div>
       </div>
 
-      {/* Modal for BuySellCard */}
       {isModalOpen && (
         <div
           style={{

@@ -9,6 +9,7 @@ interface MarketplaceAsset {
     availability: string;
     title: string;
     price: string;
+    createdAt: string;
 }
 
 const AssetsSection: React.FC = () => {
@@ -22,22 +23,25 @@ const AssetsSection: React.FC = () => {
             availability: "200/500 left",
             title: "Sunny Hills Vineyard",
             price: "150.50 USDT",
+            createdAt: "2023-01-01",
         },
         {
             image: "ipfs://QmP5v7g3Z2k4x6z8f8e5f8e5f8e5f8e5f8e5f8e5f8e5f8/asset2.jpg",
             category: "Commodities",
             interestRate: "3% P/A",
             availability: "50/200 left",
-            title: "Coastal Sculpture Collection",
+            title: "Coastal Sculpture",
             price: "200.00 USDT",
+            createdAt: "2023-01-01",
         },
         ...Array(10).fill({
             image: "https://via.placeholder.com/400x300",
             category: "Agriculture",
             interestRate: "5% P/A",
             availability: "200/500 left",
-            title: "Sunny Hills Vineyard",
-            price: "150.50 USDT",
+            title: "Sunny Vineyard",
+            price: "175.00 USDT",
+            createdAt: "2023-01-01",
         }),
     ];
 
@@ -48,7 +52,6 @@ const AssetsSection: React.FC = () => {
 
     return (
         <div style={{ padding: "20px", maxWidth: "", margin: "", backgroundColor: "#FAFEFE" }}>
-
             {/* Filter Bar */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginBottom: "20px" }}>
                 {['ALL', 'Agriculture', 'Commodities', 'Real Estate'].map((filter) => (
