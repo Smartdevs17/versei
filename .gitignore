@@ -67,8 +67,7 @@ backend/src/hardhat/./cache
 backend/src/hardhat/./artifacts
 
 # TypeChain files
-backend/src/hardhat/./typechain
-backend/src/hardhat/./typechain-types
+
 
 # solidity-coverage files
 backend/src/hardhat/./coverage
@@ -76,3 +75,8 @@ backend/src/hardhat/./coverage.json
 
 # Hardhat Ignition default folder for deployments against a local node
 backend/src/hardhat/ignition/deployments/chain-31337
+
+hardhat/node_modules
+hardhat/package-lock.json
+
+hardhat/ignition
