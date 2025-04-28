@@ -6,7 +6,7 @@ const LandingPageLayout = () => {
   return (
     <React.Fragment>
       <NavBar />
-      <Outlet
+      <Outlet />
     </React.Fragment>
   )
 }
