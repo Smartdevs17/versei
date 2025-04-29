@@ -58,7 +58,11 @@ const Home = () => {
               TOKENIZE YOUR ASSET
             </Button>
 
-            <Button variant="outline" borderColor="#7B8CE5" textColor="pharo-white">
+            <Button
+              variant="outline"
+              borderColor="#7B8CE5"
+              textColor="pharo-white"
+            >
               START INVESTING
             </Button>
           </div>
