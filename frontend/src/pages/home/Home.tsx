@@ -44,7 +44,7 @@ const Home = () => {
         <HowItWorks />
       </div>
 
-      <div className="px-[150px] flex items-center justify-center mt-[80px]">
+      <div className="px-[150px] flex items-center justify-center mt-[80px] mb-[120px]">
         <div
           className="w-full bg-center bg-cover flex justify-center items-center h-[440px] rounded-[8px] flex-col gap-10"
           style={{ backgroundImage: `url(${RectangleBg})` }}
