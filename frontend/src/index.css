@@ -12,6 +12,11 @@ body {
   margin: 0;
   font-family: "DM Sans", sans-serif;
   color: var(--color-pharos-black);
+  background: #fbfbfb;
+}
+
+.nav-item {
+  @apply flex items-center gap-2 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100;
 }
 
 /* Custom scrollbar styling */
@@ -20,12 +25,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #EFEFEF5C; /* Scrollbar color */
+  background-color: #efefef5c; /* Scrollbar color */
   border-radius: 3px; /* Rounded edges */
 }
 
 ::-webkit-scrollbar-track {
   background: transparent; /* Transparent track */
 }
-
-

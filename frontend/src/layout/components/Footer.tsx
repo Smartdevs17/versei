@@ -2,7 +2,7 @@ import Logo_white from "../../assets/Logo_white.svg";
 
 const Footer = () => {
   return (
-    <footer className="bg-pharos-blue text-white text-sm mt-[120px]">
+    <footer className="bg-pharos-blue text-white text-sm">
       <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-start">
         {/* Left Side */}
         <div>

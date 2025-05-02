@@ -10,6 +10,7 @@ interface ButtonProps {
   bgColor?: string; // New prop for background color
   textColor?: string; // New prop for text color
   borderColor?: string; // New prop for border color
+  height?: string; // New prop for height
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -20,11 +21,13 @@ const Button: React.FC<ButtonProps> = ({
   bgColor,
   textColor,
   borderColor,
+  height,
 }) => {
   const inlineStyles = {
     backgroundColor: bgColor?.startsWith('#') ? bgColor : undefined,
     color: textColor?.startsWith('#') ? textColor : undefined,
-    border: borderColor?.startsWith('#') ? `1px solid ${borderColor}` : undefined, // Explicitly set border
+    border: borderColor?.startsWith('#') ? `1px solid ${borderColor}` : undefined,
+    height: height || '34px', // Default height if not provided
   };
 
   return (
@@ -32,7 +35,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       style={inlineStyles}
       className={clsx(
-        'px-6 py-2 rounded-md font-semibold text-sm transition-all duration-200 cursor-pointer h-[54px] active:scale-95',
+        'px-6 rounded-md font-semibold text-sm transition-all duration-200 cursor-pointer active:scale-95',
         {
           'bg-pharos-blue text-white hover:bg-blue-700': variant === 'solid' && !bgColor && !textColor,
           'border border-pharos-blue text-pharos-blue hover:bg-blue-50': variant === 'outline' && !borderColor && !textColor,
