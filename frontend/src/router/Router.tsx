@@ -9,6 +9,7 @@ import Marketplace from "../pages/home/Marketplace";
 import AssetsSection from "../components/marketplaceCards/AssetsSection";
 import AssetDetails from "../pages/home/AssetDetails";
 import DashboardLayout from "../layout/DashboardLayout";
+import Dashboard from "../pages/dashboard/Dashboard";
 
 // LAYOUTS
 
@@ -27,8 +28,7 @@ const router = createBrowserRouter(
       {/* EVERY OTHER PAGE ROUTING SHOULD BE DONE IN HERE */}
       <Route path="dashboard" element={<DashboardLayout />}>
         {/* TO NAVIGATE TO THIS ROUTE JUST GO TO: /flexi/example  */}
-        <Route path="marketplace" element={<h1>Marketplace Page</h1>} />
-        {/* <Route path="governance" element={<h1>Governance Page</h1>} /> */}
+        <Route path="" element={<Dashboard />} />
       </Route>
     </Route>
   )

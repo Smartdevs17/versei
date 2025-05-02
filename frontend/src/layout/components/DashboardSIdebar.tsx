@@ -5,14 +5,14 @@ import portfolio_icon from "../../assets/sideBar/portfolio_icon.svg";
 import portfolio_icon_active from "../../assets/sideBar/portfolio_active_icon.svg";
 import market_place_icon from "../../assets/sideBar/market_place_icon.svg";
 import market_place_icon_active from "../../assets/sideBar/market_place_active_icon.svg";
+
 const menuItems = [
   {
     name: "Dashboard",
-    path: "/dashboard/dashboard",
+    path: "",
     icon: dashboard_icon,
     activeIcon: dashboard_icon_active,
   },
-
   {
     name: "Portfolio",
     path: "/portfolio",
@@ -25,36 +25,41 @@ const menuItems = [
     icon: market_place_icon,
     activeIcon: market_place_icon_active,
   },
-  // Add more items here if needed
 ];
 
-const DashboardSIdebar = () => {
+const DashboardSidebar = () => {
   return (
-    <div className="w-[224px] flex flex-col gap-1">
+    <div className="w-full flex flex-col gap-1">
       {menuItems.map((item, index) => (
         <NavLink
           key={index}
           to={item.path}
-          className="group h-[56px] w-full rounded-[8px] flex items-center gap-[12px] px-[16px] hover:bg-[#0026FF]"
-          style={{ transition: "background-color 0.3s" }}
+          className={({ isActive }) =>
+            `group h-[56px] w-full rounded-[8px] flex items-center gap-[12px] px-[16px] transition-colors duration-300 ${
+              isActive ? "bg-[#0026FF]" : "hover:bg-[#0026FF]"
+            }`
+          }
         >
-          <img
-            src={item.icon}
-            alt=""
-            className="group-hover:hidden w-[32px] h-[32px]"
-          />
-          <img
-            src={item.activeIcon}
-            alt=""
-            className="hidden group-hover:block w-[32px] h-[32px]"
-          />
-          <p className="font-semibold text-[#3F4765] group-hover:text-white">
-            {item.name}
-          </p>
+          {({ isActive }) => (
+            <>
+              <img
+                src={isActive ? item.activeIcon : item.icon}
+                alt=""
+                className="w-[32px] h-[32px]"
+              />
+              <p
+                className={`font-semibold transition-colors duration-300 ${
+                  isActive ? "text-white" : "text-[#3F4765] group-hover:text-white"
+                }`}
+              >
+                {item.name}
+              </p>
+            </>
+          )}
         </NavLink>
       ))}
     </div>
   );
 };
 
-export default DashboardSIdebar;
+export default DashboardSidebar;
