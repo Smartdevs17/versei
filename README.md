@@ -14,6 +14,9 @@ Versei Marketplace is a blockchain-based platform that tokenizes real-world asse
 - **Asset Listings**: Displays tokenized assets with details like price, yield (`interestRate`), availability, and category for easy investor access.
 - **Filtering System**: Allows investors to filter assets by category (e.g., Agriculture, Commodities) for quick navigation.
 
+## Deployment and Live Links
+- Contract Address: 0xdAA2a4Aa7A8096e9C70A8069A62775bA22138A4e
+  
 ## Live Marketplace
 You can interact with Versie via the live link:: 
 
