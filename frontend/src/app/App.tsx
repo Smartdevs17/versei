@@ -1,8 +1,13 @@
 // ROUTER
+import { WishlistProvider } from "../context/WishlistContext";
 import Router from "../router/Router";
 
 function App() {
-  return <Router />;
-}
+  return (
+    <WishlistProvider>
+      <Router />
+    </WishlistProvider>
+  );
+};
 
 export default App;
