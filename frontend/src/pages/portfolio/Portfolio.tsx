@@ -9,7 +9,6 @@ import {
   ResponsiveContainer,
   CartesianGrid,
   Area,
-  AreaChart,
 } from "recharts";
 
 const data = [
@@ -27,7 +26,7 @@ const data = [
   { date: "12 Apr", value: 9600 },
 ];
 
-const CustomTooltip = ({ active, payload }) => {
+const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: any[] }) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-[#0026FF] text-white text-sm px-3 py-1 rounded-md shadow">
@@ -116,7 +115,7 @@ const Portfolio = () => {
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis dataKey="date" />
             <YAxis />
-            <Tooltip content={<CustomTooltip />} />
+            <Tooltip content={<CustomTooltip active={undefined} payload={undefined} />} />
             <Area
               type="monotone"
               dataKey="value"

@@ -98,6 +98,8 @@ const AssetDetails: React.FC = () => {
         })
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         .catch((err) => {
+          console.log(err);
+          
           setAssetError('Failed to load asset data. Please try again later.');
         })
         .finally(() => {
