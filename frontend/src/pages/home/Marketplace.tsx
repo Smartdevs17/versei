@@ -1,4 +1,3 @@
-import React from 'react'
 import NavBar from '../../layout/components/NavBar'
 import Button from '../../components/button/Button'
 import RectangleBg from "../../assets/Rectangle 412.svg";
