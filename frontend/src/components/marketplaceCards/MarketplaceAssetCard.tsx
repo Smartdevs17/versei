@@ -244,7 +244,7 @@ const MarketplaceAssetCard: React.FC<MarketplaceAssetCardProps> = ({ data }) => 
             >
               ✕
             </button>
-            <BuySellCard initialTab="Buy" asset={data} />
+            <BuySellCard initialTab="Buy" asset={data} onBuyAssetClick={handleCloseModal}  />
           </div>
         </div>
       )}

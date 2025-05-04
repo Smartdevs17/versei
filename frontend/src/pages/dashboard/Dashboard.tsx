@@ -228,7 +228,7 @@ const Dashboard = () => {
             >
               ✕
             </button>
-            <BuySellCard initialTab="Buy" />
+            <BuySellCard initialTab="Buy" onBuyAssetClick={handleCloseModal} />
           </div>
         </div>
       )}
