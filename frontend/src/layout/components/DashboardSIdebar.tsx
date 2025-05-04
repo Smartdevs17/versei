@@ -9,19 +9,19 @@ import market_place_icon_active from "../../assets/sideBar/market_place_active_i
 const menuItems = [
   {
     name: "Dashboard",
-    path: "",
+    path: "/dashboard/dashboard", // Updated path
     icon: dashboard_icon,
     activeIcon: dashboard_icon_active,
   },
   {
-    name: "Portfolio",
-    path: "/portfolio",
+    name: "My Portfolio",
+    path: "/dashboard/portfolio",
     icon: portfolio_icon,
     activeIcon: portfolio_icon_active,
   },
   {
     name: "Marketplace",
-    path: "/marketplace",
+    path: "/dashboard/marketplace",
     icon: market_place_icon,
     activeIcon: market_place_icon_active,
   },

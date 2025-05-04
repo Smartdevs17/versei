@@ -1,6 +1,6 @@
 import Button from "../../components/button/Button";
 import NavBar from "../../layout/components/NavBar";
-import herro_bg from "../../assets/home/hero_logo.svg";
+import herro_bg from "../../assets/home/hero_logo.png";
 import DiscoverAssets from "../../components/home/DiscoverAssets";
 import HowItWorks from "../../components/home/HowItWorks";
 import RectangleBg from "../../assets/Rectangle 412.svg";

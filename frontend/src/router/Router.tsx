@@ -5,15 +5,17 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Home from "../pages/home/Home";
+
+// LAYOUTS
+import DashboardLayout from "../layout/DashboardLayout";
+
+// PAGES
+import Dashboard from "../pages/dashboard/Dashboard";
+import Portfolio from "../pages/portfolio/Portfolio";
 import Marketplace from "../pages/home/Marketplace";
 import AssetsSection from "../components/marketplaceCards/AssetsSection";
 import AssetDetails from "../pages/home/AssetDetails";
-import DashboardLayout from "../layout/DashboardLayout";
-import Dashboard from "../pages/dashboard/Dashboard";
-
-// LAYOUTS
-
-// PAGES
+import MarketPlaceDashboard from "../pages/marketplace/MarketPlaceDashboard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,7 +30,9 @@ const router = createBrowserRouter(
       {/* EVERY OTHER PAGE ROUTING SHOULD BE DONE IN HERE */}
       <Route path="dashboard" element={<DashboardLayout />}>
         {/* TO NAVIGATE TO THIS ROUTE JUST GO TO: /flexi/example  */}
-        <Route path="" element={<Dashboard />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="portfolio" element={<Portfolio />} />
+        <Route path="marketplace" element={<MarketPlaceDashboard />} />
       </Route>
     </Route>
   )

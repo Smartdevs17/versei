@@ -27,7 +27,7 @@ const Button: React.FC<ButtonProps> = ({
     backgroundColor: bgColor?.startsWith('#') ? bgColor : undefined,
     color: textColor?.startsWith('#') ? textColor : undefined,
     border: borderColor?.startsWith('#') ? `1px solid ${borderColor}` : undefined,
-    height: height || '34px', // Default height if not provided
+    height: height || '44px', // Default height if not provided
   };
 
   return (
