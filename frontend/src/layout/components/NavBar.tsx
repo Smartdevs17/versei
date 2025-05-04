@@ -38,7 +38,7 @@ const NavBar = () => {
         </div>
 
         <div>
-          <Button variant="solid">LAUNCH APP</Button>
+          <Button variant="solid" onClick={()=> navigate("/dashboard/dashboard")}>LAUNCH APP</Button>
         </div>
       </div>
     </div>

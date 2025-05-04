@@ -2,8 +2,12 @@ import Button from "../../components/button/Button";
 import AssetCard from "../../components/dashboard/AssetCard";
 import DashboardTitle from "../../components/dashboard/DashboardTitle";
 import properties_image from "../../assets/properties_image.svg";
+import BuySellCard from "../../components/assetDetails/BuySellCard";
+import { useState } from "react";
 
 const MarketPlaceDashboard = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const wishlistData = [
     {
       image: properties_image,
@@ -62,6 +66,10 @@ const MarketPlaceDashboard = () => {
       price: "1.50 USDT",
     },
   ];
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <>
       <DashboardTitle
@@ -95,11 +103,58 @@ const MarketPlaceDashboard = () => {
             tags={item.tags}
             title={item.title}
             price={item.price}
-            onBuyClick={() => console.log(`Buy ${item.title}`)}
+            onBuyClick={() => setIsModalOpen(true)}
             onDetailsClick={() => console.log(`Details of ${item.title}`)}
           />
         ))}
       </div>
+
+      {isModalOpen && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
+          }}
+          onClick={handleCloseModal}
+        >
+          <div
+            style={{
+              backgroundColor: "white",
+              borderRadius: "8px",
+              padding: "24px",
+              maxWidth: "400px",
+              width: "90%",
+              position: "relative",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={handleCloseModal}
+              style={{
+                position: "absolute",
+                top: "8px",
+                right: "8px",
+                background: "none",
+                border: "none",
+                fontSize: "18px",
+                cursor: "pointer",
+                color: "#4b5563",
+              }}
+            >
+              ✕
+            </button>
+            <BuySellCard initialTab="Buy" />
+          </div>
+        </div>
+      )}
     </>
   );
 };
