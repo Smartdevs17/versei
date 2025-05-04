@@ -4,6 +4,7 @@ import NavBarSearchInput from "./NavBarSearchInput";
 import icon_notification from "../../assets/nav/Icon_notification.svg";
 import profile_prefill from "../../assets/nav/Bg.svg";
 import chevron_down from "../../assets/nav/chevron_down.svg";
+import { useNavigate } from "react-router-dom";
 
 // const navItems = [
 //   { name: "Home", path: "/" },
@@ -12,10 +13,11 @@ import chevron_down from "../../assets/nav/chevron_down.svg";
 // ];
 
 const DashboardHeader = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-pharo-white h-[120px] w-full px-[150px] border-b border-[#1B255E33] sticky top-0 z-10">
       <div className="h-full flex items-center justify-between">
-        <div>
+        <div onClick={() => navigate("/")} className="cursor-pointer">
           <img src={versei_logo} alt="VERSEI LOGO" />
         </div>
 

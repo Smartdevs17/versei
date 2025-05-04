@@ -4,7 +4,7 @@ import Button from '../../components/button/Button'
 import RectangleBg from "../../assets/Rectangle 412.svg";
 import Footer from '../../layout/components/Footer'
 import SearchBar from '../../components/search/SearchBar';
-import herro_bg from "../../assets/home/hero_logo.svg";
+import herro_bg from "../../assets/home/hero_logo.png";
 import AssetsSection from '../../components/marketplaceCards/AssetsSection';
 
 const Marketplace = () => {
